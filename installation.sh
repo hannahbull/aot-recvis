@@ -4,16 +4,12 @@
 
 mkdir downloads 
 cd downloads 
-chmod u+r . 
-chmod u+w . 
-chmod u+x . 
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64-deb
 sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb
 sudo apt-get update
 sudo apt-get install cuda
 sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64-deb
-cd .. 
 sudo apt-get update
 sudo apt-get upgrade cuda
 
@@ -66,5 +62,19 @@ cd ~/torch; bash install-deps;
 ./install.sh
 source ~/.bashrc
 
+###################
+###### CONDA ######
+###################
 
+wget https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
+bash Anaconda3-2018.12-Linux-x86_64.sh 
+source ../.bashrc
+conda update conda
 
+###################
+##### PYTORCH #####
+###################
+
+# python -m pip install -t lib http://download.pytorch.org/whl/cu80/torch-0.3.1-cp27-cp27mu-linux_x86_64.whl 
+# python -m pip install -t lib torchvision 
+conda install pytorch torchvision -c pytorch
